@@ -3,13 +3,9 @@ package com.ttn.Bootcamp22project.entities.user;
 
 // User_role not created, it will be created through bidirectional-mapping
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -42,6 +38,23 @@ public class User {
     Boolean isLocked;
     Integer invalidAttemptCount;
     Date passwordUpdateDate;
+
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    Customer customer;
+
+    @OneToOne(cascade= CascadeType.ALL)
+    @JoinColumn(name = "seller_id")
+    Seller seller;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    Set<Address> addresses;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role",
+                joinColumns = @JoinColumn(name = "user_id"),
+                inverseJoinColumns = @JoinColumn(name = "role_id"))
+    Set<Role> roles;
 
     public Integer getId() {
         return id;

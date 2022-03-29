@@ -1,9 +1,6 @@
 package com.ttn.Bootcamp22project.entities.user;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Address {
@@ -21,14 +18,18 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Integer id;
     String city;
     String state;
     String Country;
     String addressLine;
     String zipCode;
     String label;
-    String userId;
+    Integer userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
 
     public int getId() {
         return id;
@@ -86,11 +87,15 @@ public class Address {
         this.label = label;
     }
 
-    public String getUserId() {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 }

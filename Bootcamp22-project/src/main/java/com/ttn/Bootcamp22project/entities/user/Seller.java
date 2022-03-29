@@ -1,12 +1,9 @@
 package com.ttn.Bootcamp22project.entities.user;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Seller {
+public class Seller extends User {
     /*
     USER_ID
     GST
@@ -20,6 +17,9 @@ public class Seller {
     String gst;
     String companyContact;
     String companyName;
+
+    @OneToOne(mappedBy = "customer")
+    User user;
 
     public int getUserId() {
         return userId;

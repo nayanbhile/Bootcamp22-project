@@ -1,9 +1,6 @@
 package com.ttn.Bootcamp22project.entities.user;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Customer {
@@ -12,6 +9,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int userId;
     String contact;
+
+    @OneToOne(mappedBy = "customer")
+    User user;
 
     public int getUserId() {
         return userId;
