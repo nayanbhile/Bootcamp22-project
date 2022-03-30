@@ -25,7 +25,7 @@ public class Address {
     String addressLine;
     String zipCode;
     String label;
-    Integer userId;
+//   Integer userId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -91,11 +91,11 @@ public class Address {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+//    public Integer getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(Integer userId) {
+//        this.userId = userId;
+//    }
 }

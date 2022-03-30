@@ -3,7 +3,7 @@ package com.ttn.Bootcamp22project.entities.user;
 import javax.persistence.*;
 
 @Entity
-public class Seller extends User {
+public class Seller{
     /*
     USER_ID
     GST
