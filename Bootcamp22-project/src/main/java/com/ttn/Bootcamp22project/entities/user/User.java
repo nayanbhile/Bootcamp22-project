@@ -3,7 +3,10 @@ package com.ttn.Bootcamp22project.entities.user;
 
 // User_role not created, it will be created through bidirectional-mapping
 
+import org.springframework.security.core.GrantedAuthority;
+
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -32,11 +35,11 @@ public class User {
     String middleName;
     String lastName;
     String password;
-    Boolean isDeleted;
-    Boolean isActive;
-    Boolean isExpired;
-    Boolean isLocked;
-    Integer invalidAttemptCount;
+    Boolean isDeleted = false;
+    Boolean isActive = false;
+    Boolean isExpired = false;
+    Boolean isLocked = false;
+    Integer invalidAttemptCount = 0;
     Date passwordUpdateDate;
 
     @OneToOne(cascade= CascadeType.ALL)
@@ -150,5 +153,13 @@ public class User {
 
     public void setPasswordUpdateDate(Date passwordUpdateDate) {
         this.passwordUpdateDate = passwordUpdateDate;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
